@@ -20,3 +20,17 @@
 
  */
 
+/**
+ * 回溯
+* @param {number[]} nums
+* @return {number[][]}
+*/
+var subsets = function (nums, index = 0, res = [[]], tmp = []) {
+  for (var i = index; i < nums.length; i++) {
+    var temp = [...tmp, nums[i]]
+    res.push([...temp])
+    subsets(nums, i + 1, res, temp)
+  }
+  return res
+};
+
