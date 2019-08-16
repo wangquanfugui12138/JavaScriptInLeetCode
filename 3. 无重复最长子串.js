@@ -48,3 +48,26 @@ var lengthOfLongestSubstring = function (s) {
 
   return res.length
 };
+
+
+/**
+ * 优化滑动窗口
+ * @param {string} s
+ * @return {number}
+ */
+var lengthOfLongestSubstring = function (s) {
+  if (s.length < 2) return s.length
+
+  const map = {}
+  let res = 0, start = 0
+
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]]) {
+      start = Math.max(map[s[i]], start)
+    }
+    res = Math.max(res, i - start + 1)
+    map[s[i]] = i + 1
+  }
+
+  return res
+}
