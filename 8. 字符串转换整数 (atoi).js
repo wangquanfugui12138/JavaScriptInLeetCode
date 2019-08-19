@@ -51,7 +51,8 @@
 */
 var myAtoi = function (str) {
   const res = str.match(/(?<=^[ ]*)(\+|\-)?\d+/g)
-  //const res = str.match(/^\W*[+-]*\d+/g)
+  //const res = str.match(/^\s*[+-]{0,1}\d+/g)
+  //const res = str.match(/^\s*[+-]?\d+/g)
   return res ? Math.min(Math.max(res[0], 1 << 31), (1 << 31) * (-1) - 1) : 0
 };
 
