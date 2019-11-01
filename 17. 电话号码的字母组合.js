@@ -49,3 +49,38 @@ var get = function(map, nums, index=0, res=[]){
     
     return res
 }
+
+/**
+ * @param {string} digits
+ * @return {string[]}
+ */
+var letterCombinations = function(nums) {
+    if(!nums) return []
+    
+    const map = new Map()
+    map.set('2','abc')
+    map.set('3','def')
+    map.set('4','ghi')
+    map.set('5','jkl')
+    map.set('6','mno')
+    map.set('7','pqrs')
+    map.set('8','tuv')
+    map.set('9','wxyz')
+    
+    return get(map, nums)
+}
+
+var get = function(map, nums, index=0, tmp='', res=[]){
+    if(index === nums.length){
+        res.push(tmp)
+        return 
+    }
+    
+    const str = map.get(nums[index])
+    
+    for(let i = 0; i < str.length; i++){
+        get(map, nums, index+1, `${tmp}${str[i]}`, res)
+    }
+    
+    return res
+}
